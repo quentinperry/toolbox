@@ -4,7 +4,7 @@
   const C = Charts;
 
   /* =====================================================================
-     CHAPTER 3 — Making your charts for slides
+     CHAPTER 3: Making your charts for slides
      ===================================================================== */
   const QS = ['Q1 ’24', 'Q2 ’24', 'Q3 ’24', 'Q4 ’24', 'Q1 ’25', 'Q2 ’25', 'Q3 ’25'];
   const SEGS = [
@@ -22,12 +22,12 @@
 
   const MESSAGES = [
     { msg: 'X is bigger than Y', chart: 'Horizontal bar chart', why: 'Bars make size differences obvious; the horizontal layout fits long labels without rotating text.', title: 'Enterprise customers generate 3× more revenue than SMB' },
-    { msg: 'X is growing over time', chart: 'Line chart', why: 'The brain is good at seeing slopes. Above 5 lines it turns into spaghetti — split it.', title: 'Customer acquisition cost has risen every year since 2020' },
+    { msg: 'X is growing over time', chart: 'Line chart', why: 'The brain is good at seeing slopes. Above 5 lines it turns into spaghetti, split it.', title: 'Customer acquisition cost has risen every year since 2020' },
     { msg: 'X accelerated after Y', chart: 'Line chart with annotation', why: 'The annotation explains the moment the trend changed. Keep it to 2–3 annotations max.', title: 'Trial conversion accelerated after the pricing change' },
     { msg: 'X makes up 60% of total', chart: 'Simple bar (not a pie)', why: 'Brains are terrible at comparing angles. Bars are almost always clearer.', title: 'Enterprise makes up 60% of revenue' },
     { msg: 'Revenue is up, driven by segment A', chart: 'Stacked bar', why: 'Shows both the total and its composition: one segment flat, one growing.', title: 'Revenue grew +37%, driven entirely by enterprise' },
     { msg: 'X and Y are correlated', chart: 'Scatter plot + trend line', why: 'Only when the relationship IS the insight. If you need to explain the axes, it’s the wrong chart for this audience.', title: 'Customers with higher NPS churn less' },
-    { msg: 'Most values cluster around X', chart: 'Histogram (sparingly)', why: 'Most executives aren’t used to these — use one only when the distribution is the insight.', title: 'Most customers pay $50–100/month, but 5% pay over $500' },
+    { msg: 'Most values cluster around X', chart: 'Histogram (sparingly)', why: 'Most executives aren’t used to these, use one only when the distribution is the insight.', title: 'Most customers pay $50–100/month, but 5% pay over $500' },
     { msg: 'Our performance vs. plan', chart: 'Bars with a reference line', why: 'The dashed target line gives instant “compared to what?”.', title: 'We beat plan in 4 of the last 6 months' },
   ];
 
@@ -77,13 +77,13 @@
     html() {
       return `
       ${section('communicate', '01', 'Charts are for communication', `
-        <p>Nobody cares about your data. They care about what your data means for them. If someone looks at your chart for 5 seconds, they should be able to tell you <b>the message</b> — not the data, not the methodology.</p>
+        <p>Nobody cares about your data. They care about what your data means for them. If someone looks at your chart for 5 seconds, they should be able to tell you <b>the message</b>, not the data, not the methodology.</p>
         ${cmp('“This chart shows revenue by product, by region, by segment, over time, with trend lines and forecasts.”', '“This chart shows that Product A is declining in Europe while growing everywhere else.”')}
         <div class="callout"><b>The “chart without you” test.</b> Your slide gets forwarded to the CEO. You’re not there. In 10 seconds, can they tell what they’re looking at, what the message is, and why it matters? Pass it with a <b>title that states the insight</b>, a <b>visual that makes it obvious</b> (color, size, annotation) and <b>minimal supporting text</b>.</div>
-        <p><b>Complexity signals insecurity.</b> Junior analysts make complex charts to show they did serious work; senior analysts make simple charts because they’re confident. Before adding another series, a second axis or a trend line, ask: “Does this help prove my point, or am I showing off?” The best charts are almost boring — so clear they feel obvious.</p>`)}
+        <p><b>Complexity signals insecurity.</b> Junior analysts make complex charts to show they did serious work; senior analysts make simple charts because they’re confident. Before adding another series, a second axis or a trend line, ask: “Does this help prove my point, or am I showing off?” The best charts are almost boring, so clear they feel obvious.</p>`)}
 
       ${section('lab', '02', 'Chart lab: from Excel default to one clear message', `
-        <p>Same data, same numbers. Flip each switch and watch the message appear — or disappear.</p>
+        <p>Same data, same numbers. Flip each switch and watch the message appear, or disappear.</p>
         ${widget('Fix this chart', `
           <div class="controls">
             <div><span class="ctl-label">Chart type</span>${seg('type', [['line', 'Line'], ['pie', 'Pie'], ['3d', '3D bars']], 'line')}</div>
@@ -100,7 +100,7 @@
           </div>`)}`)}
 
       ${section('picking', '03', 'Picking the right chart', `
-        <p>Most chart mistakes happen because analysts pick the type from their <b>data structure</b> (“I have time series, so: line chart”) instead of their <b>message</b> (“I want to show growth accelerated after the pricing change — what makes that most obvious?”).</p>
+        <p>Most chart mistakes happen because analysts pick the type from their <b>data structure</b> (“I have time series, so: line chart”) instead of their <b>message</b> (“I want to show growth accelerated after the pricing change, what makes that most obvious?”).</p>
         ${widget('Message → chart', `
           <div class="controls"><div style="width:100%"><span class="ctl-label">Your message</span><div class="chip-row" id="msgChips">${MESSAGES.map((m, i) => `<button class="chip" data-msg="${i}" aria-pressed="${i === 0}">${m.msg}</button>`).join('')}</div></div></div>
           <div class="grid2" style="grid-template-columns:minmax(0,1.6fr) minmax(0,1fr)">
@@ -109,7 +109,7 @@
           </div>`)}
         <h3>Charts to avoid</h3>
         <div class="grid2">
-          <div class="card"><h4>❌ Pie charts</h4><p class="small">Human brains can’t accurately compare angles or areas. Use a horizontal bar chart. Only exception: a 2-segment majority/minority split — and even then bars are usually clearer.</p></div>
+          <div class="card"><h4>❌ Pie charts</h4><p class="small">Human brains can’t accurately compare angles or areas. Use a horizontal bar chart. Only exception: a 2-segment majority/minority split, and even then bars are usually clearer.</p></div>
           <div class="card"><h4>❌ 3D charts</h4><p class="small">Visual complexity without information; values get harder to read. Never the right choice. Ever.</p></div>
           <div class="card"><h4>❌ Dual-axis charts</h4><p class="small">Easy to manipulate scales to show false relationships. Use two stacked charts or a scatter plot instead.</p></div>
           <div class="card"><h4>❌ Too many categories</h4><p class="small">More than 7 gets cluttered. Show the top 5 + “Other”, or make a separate deep-dive chart.</p></div>
@@ -125,7 +125,7 @@
 
       ${section('mistakes', '04', 'Common chart mistakes', `
         <h3>Misleading axes</h3>
-        <p><b>Bar charts must start at zero</b> — bars represent magnitude. Line charts may start above zero (they show trend, not magnitude), as long as it’s labeled clearly.</p>
+        <p><b>Bar charts must start at zero</b>, bars represent magnitude. Line charts may start above zero (they show trend, not magnitude), as long as it’s labeled clearly.</p>
         ${widget('Truncate the axis', `
           <div class="range-row" style="grid-template-columns:150px 1fr 60px"><label for="axStart">Y-axis starts at</label><input type="range" id="axStart" min="0" max="98" step="1" value="0"><output id="axOut"></output></div>
           <div class="grid2" style="grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);margin-top:10px">
@@ -133,7 +133,7 @@
             <div><div class="kpis" style="grid-template-columns:1fr 1fr"><div class="kpi"><div class="k-label">Actual growth</div><div class="k-value">+5%</div></div><div class="kpi accent"><div class="k-label">What the eye sees</div><div class="k-value" id="axSeen"></div></div></div><p id="axMsg" class="small"></p></div>
           </div>`)}
         <div class="grid2">
-          <div class="card"><h4>Too many data series</h4><p class="small">Max 3–4 lines. Highlight the important one, gray the rest — or split into multiple charts.</p></div>
+          <div class="card"><h4>Too many data series</h4><p class="small">Max 3–4 lines. Highlight the important one, gray the rest, or split into multiple charts.</p></div>
           <div class="card"><h4>Rainbow colors</h4><p class="small">One accent color for what matters, gray for context, 3–4 colors max.</p></div>
           <div class="card"><h4>Cluttered legends</h4><p class="small">Label lines directly at their end points. If labels don’t fit, you have too many series.</p></div>
           <div class="card"><h4>Tiny fonts</h4><p class="small">10pt minimum; 12pt body, 14–16pt titles. If you can’t read it from 3 meters away, it’s too small.</p></div>
@@ -148,26 +148,26 @@
           'Axes are labeled with units',
           'The Y-axis is appropriate for the chart type',
           'There are fewer than 5 data series',
-          'Color highlights — it doesn’t decorate',
+          'Color highlights, it doesn’t decorate',
           'Labels are readable from 3 meters away',
           'There’s a comparison, benchmark or context',
           'It would work without me in the room to explain it',
         ])}<div style="margin-top:10px"><div class="meter"><i id="ckMeter"></i></div><p class="small muted" id="ckOut" style="margin-top:6px"></p></div></div>`)}
 
       ${section('framing', '06', 'Framing and anchors', `
-        <p>The exact same data tells completely different stories depending on how you frame it. <b>Your choice of comparison creates the frame</b> — choose it deliberately, and stay honest with the data.</p>
+        <p>The exact same data tells completely different stories depending on how you frame it. <b>Your choice of comparison creates the frame</b>, choose it deliberately, and stay honest with the data.</p>
         ${widget('One number, three stories', `
           <div class="controls"><div><span class="ctl-label">Compare $5M revenue…</span>${seg('frame', Object.entries(FRAMES).map(([k, f]) => [k, f.label]), 'yoy')}</div></div>
           <div class="grid2" style="grid-template-columns:minmax(0,1.4fr) minmax(0,1fr)">
             <div><p class="chart-title" id="frTitle"></p><div id="frChart"></div></div>
-            <div><span class="ctl-label">The narrative</span><p id="frStory"></p><p class="small muted">The first number you show sets expectations for everything after it. CAC of $450 feels expensive after a $350 target — and efficient after a $600 competitor benchmark.</p></div>
+            <div><span class="ctl-label">The narrative</span><p id="frStory"></p><p class="small muted">The first number you show sets expectations for everything after it. CAC of $450 feels expensive after a $350 target, and efficient after a $600 competitor benchmark.</p></div>
           </div>`)}
         <h3>Always include a “compared to what?”</h3>
         <div class="grid2">
-          <div class="card"><h4>Time</h4><p class="small">vs. last quarter, same period last year, rolling average — e.g. this year’s line with last year as a reference line.</p></div>
-          <div class="card"><h4>Goal</h4><p class="small">vs. plan, target, budget — e.g. bars with a horizontal target line.</p></div>
-          <div class="card"><h4>Peers</h4><p class="small">vs. industry benchmark, competitors, other segments — e.g. your NPS vs. industry average.</p></div>
-          <div class="card"><h4>Baseline</h4><p class="small">Before/after an intervention, with/without a feature, treatment vs. control — annotate the change date.</p></div>
+          <div class="card"><h4>Time</h4><p class="small">vs. last quarter, same period last year, rolling average, e.g. this year’s line with last year as a reference line.</p></div>
+          <div class="card"><h4>Goal</h4><p class="small">vs. plan, target, budget, e.g. bars with a horizontal target line.</p></div>
+          <div class="card"><h4>Peers</h4><p class="small">vs. industry benchmark, competitors, other segments, e.g. your NPS vs. industry average.</p></div>
+          <div class="card"><h4>Baseline</h4><p class="small">Before/after an intervention, with/without a feature, treatment vs. control, annotate the change date.</p></div>
         </div>
         <p style="margin-top:16px">Visual techniques: <b>reference lines</b> for targets, <b>shaded regions</b> for ranges or periods, <b>annotations</b> for key events (2–3 max), and <b>comparison bars</b> for period-over-period.</p>
         ${widget('Frame it for your audience', `
@@ -204,7 +204,7 @@
         const checks = [
           [lab.title === 'insight', 'Title states the insight', 'Title is a topic label'],
           [lab.type === 'line', 'Chart type fits “change over time”', lab.type === 'pie' ? 'Pie: the trend is invisible, angles are hard to compare' : '3D distorts values and hides the trend'],
-          [n <= 4, '3 series — readable', '8 series — spaghetti'],
+          [n <= 4, '3 series, readable', '8 series, spaghetti'],
           [lab.color === 'accent', 'Color highlights what matters', 'Rainbow: everything competes'],
           [lab.labels === 'direct' || lab.type !== 'line', 'Direct labels, no eye-jumping', 'Legend box forces back-and-forth'],
           [lab.grid !== 'heavy', 'Recessive gridlines', 'Heavy gridlines add clutter'],
@@ -234,7 +234,7 @@
       $('#pieChart', root).innerHTML = C.pie({ values: RV, labels: REG, colors: ['var(--c1)', 'var(--c2)', 'var(--c3)', 'var(--c4)', 'var(--c7)'], hideValues: true, h: 280 });
       $$('#pieBtns .btn', root).forEach((b) => b.addEventListener('click', () => {
         const ok = b.dataset.ans === 'east';
-        $('#pieFb', root).innerHTML = ok ? '<b>Correct</b> — but you probably weren’t sure. That hesitation is the problem with pies.' : '<b>Not quite.</b> East is 21%, South is 20%. Angles hide a difference that bars make obvious.';
+        $('#pieFb', root).innerHTML = ok ? '<b>Correct</b>, but you probably weren’t sure. That hesitation is the problem with pies.' : '<b>Not quite.</b> East is 21%, South is 20%. Angles hide a difference that bars make obvious.';
         $('#pieReveal', root).classList.add('on');
         const order = RV.map((v, i) => i).sort((a, b) => RV[b] - RV[a]);
         $('#pieBars', root).innerHTML = C.hbars({ labels: order.map((i) => REG[i]), values: order.map((i) => RV[i]), colors: (k) => (['East', 'South'].includes(REG[order[k]]) ? (REG[order[k]] === 'East' ? 'var(--accent)' : 'var(--ink-2)') : 'var(--context)'), fmt: (v) => v + '%', labelW: 90, max: 25 });
@@ -246,7 +246,7 @@
         $('#axOut', root).textContent = s;
         const seen = ((105 - s) / (100 - s) - 1) * 100;
         $('#axSeen', root).textContent = '+' + (seen >= 100 ? seen.toFixed(0) : seen.toFixed(0)) + '%';
-        $('#axMsg', root).innerHTML = s === 0 ? 'Honest: the bars’ heights are proportional to the values.' : `<b style="color:var(--bad)">Misleading.</b> Starting at ${s} makes a 5% gain look like ${seen.toFixed(0)}%. Bars represent magnitude — start them at zero.`;
+        $('#axMsg', root).innerHTML = s === 0 ? 'Honest: the bars’ heights are proportional to the values.' : `<b style="color:var(--bad)">Misleading.</b> Starting at ${s} makes a 5% gain look like ${seen.toFixed(0)}%. Bars represent magnitude, start them at zero.`;
         $('#axChart', root).innerHTML = C.bar({ labels: ['Last year', 'This year'], values: [100, 105], yMin: s, yMax: 110, colors: ['var(--context)', 'var(--accent)'], fmt: (v) => '$' + v + 'M', h: 260, maxBar: 90 });
       };
       $('#axStart', root).addEventListener('input', renderAx);
@@ -255,7 +255,7 @@
       const ck = () => {
         const n = $$('[data-check="chart-check"] input:checked', root).length;
         $('#ckMeter', root).style.width = (n / 9) * 100 + '%';
-        $('#ckOut', root).textContent = n === 9 ? 'Ready to present.' : `${n} of 9 — if any answer is “no”, fix it before presenting.`;
+        $('#ckOut', root).textContent = n === 9 ? 'Ready to present.' : `${n} of 9, if any answer is “no”, fix it before presenting.`;
       };
       root.addEventListener('checkchange', ck);
 
@@ -281,7 +281,7 @@
   };
 
   /* =====================================================================
-     CHAPTER 4 — Slide design
+     CHAPTER 4: Slide design
      ===================================================================== */
   const DETOX = [
     ['deco', 'Decorative graphics', 'Stock photos & clip-art compete with your content'],
@@ -307,8 +307,8 @@
     sections: [['hierarchy', 'Visual hierarchy'], ['detox', 'Let’s detox'], ['exec', 'Exec summary'], ['appendix', 'Placement & appendix'], ['self4', 'Self-assessment']],
     takeaways: [
       '<b>Visual hierarchy guides the eye:</b> title (biggest) → chart (center) → bullets (supporting) → footer (smallest).',
-      '<b>Size, color and position signal importance</b> — use them intentionally, not decoratively.',
-      '<b>Detox your slides:</b> remove 50% of elements — decorations, redundant labels, gridlines, borders.',
+      '<b>Size, color and position signal importance</b>, use them intentionally, not decoratively.',
+      '<b>Detox your slides:</b> remove 50% of elements, decorations, redundant labels, gridlines, borders.',
       '<b>The exec summary is your most important slide:</b> Situation → Complication → Resolution, 60 seconds, no charts, stands alone.',
       '<b>White space is a feature,</b> not a bug.',
       '<b>The squint test reveals hierarchy:</b> if the wrong thing stands out, fix it.',
@@ -342,9 +342,9 @@
           </div>`)}`)}
 
       ${section('exec', '03', 'The executive summary slide', `
-        <p><b>If executives only see one slide from your deck, this is it.</b> It’s not a table of contents and not an agenda — it delivers your entire message in 60 seconds, using <b>Situation → Complication → Resolution</b>.</p>
+        <p><b>If executives only see one slide from your deck, this is it.</b> It’s not a table of contents and not an agenda, it delivers your entire message in 60 seconds, using <b>Situation → Complication → Resolution</b>.</p>
         <div class="grid3">
-          <div class="card"><h4>1 · Situation</h4><p class="small">One sentence. Sets the context — what “normal” was.</p></div>
+          <div class="card"><h4>1 · Situation</h4><p class="small">One sentence. Sets the context, what “normal” was.</p></div>
           <div class="card"><h4>2 · Complication</h4><p class="small">One sentence. What went wrong, or the opportunity. Creates tension.</p></div>
           <div class="card"><h4>3 · Resolution</h4><p class="small">2–4 bullets: root cause, recommendation, expected impact, next steps.</p></div>
         </div>
@@ -366,12 +366,12 @@
             </div>
           </div>`)}
         <h3>What NOT to include</h3>
-        <p>❌ Methodology (appendix) · ❌ Detailed data beyond key metrics · ❌ Multiple options — pick one · ❌ Open questions — do the research or recommend with caveats · ❌ Jargon.</p>`)}
+        <p>❌ Methodology (appendix) · ❌ Detailed data beyond key metrics · ❌ Multiple options, pick one · ❌ Open questions, do the research or recommend with caveats · ❌ Jargon.</p>`)}
 
       ${section('appendix', '04', 'Placement and the appendix trap', `
         <div class="grid2">
-          <div class="card"><h4>Where does the exec summary go?</h4><p class="small"><b>Slide 1</b> for time-constrained senior execs. <b>Slide 2</b> (after a brief title/context slide) for audiences who want context first. <b>Slide 3</b>, after an agenda? Too slow — they lose patience.</p></div>
-          <div class="card"><h4>The appendix trap</h4><p class="small">If it’s important, it belongs in the main deck. If it’s not, delete it. The appendix holds methodology, extra data cuts, sensitivity analyses and answers to anticipated questions — never your recommendation, key supporting data or critical caveats.</p></div>
+          <div class="card"><h4>Where does the exec summary go?</h4><p class="small"><b>Slide 1</b> for time-constrained senior execs. <b>Slide 2</b> (after a brief title/context slide) for audiences who want context first. <b>Slide 3</b>, after an agenda? Too slow, they lose patience.</p></div>
+          <div class="card"><h4>The appendix trap</h4><p class="small">If it’s important, it belongs in the main deck. If it’s not, delete it. The appendix holds methodology, extra data cuts, sensitivity analyses and answers to anticipated questions, never your recommendation, key supporting data or critical caveats.</p></div>
         </div>`)}
 
       ${section('self4', '05', 'Self-assessment', `
@@ -409,7 +409,7 @@
         const n = Object.values(f).filter(Boolean).length;
         $('#dxMeter', root).style.width = (n / DETOX.length) * 100 + '%';
         $('#dxOut', root).textContent = n === DETOX.length ? 'Same information, half the clutter, 3× clearer.' : `${n} of ${DETOX.length} fixed`;
-        $('#layers', root).innerHTML = n === DETOX.length ? `<span class="ctl-label" style="margin-top:16px">The four layers — hover to see them</span><ul class="layer-list">
+        $('#layers', root).innerHTML = n === DETOX.length ? `<span class="ctl-label" style="margin-top:16px">The four layers, hover to see them</span><ul class="layer-list">
           <li tabindex="0" data-l="1"><b>1 · The insight (title)</b>Largest font, top of the slide, a full sentence</li>
           <li tabindex="0" data-l="2"><b>2 · The proof (visual)</b>50–70% of the slide, color highlights what matters</li>
           <li tabindex="0" data-l="3"><b>3 · Supporting context</b>2–3 short bullets: cause, implication, action</li>
@@ -453,13 +453,13 @@
           <div class="meter" style="position:relative;margin-top:6px"><i style="width:${Math.min(100, (secs / max) * 100)}%;background:${secs > 60 ? 'var(--bad)' : 'var(--accent)'}"></i><span style="position:absolute;left:50%;top:-3px;bottom:-3px;width:2px;background:var(--ink)"></span></div>`;
         const sentences = (t) => t.split(/[.!?](\s|$)/).filter((x) => x && x.trim().length > 2).length;
         const checks = [
-          [secs <= 60, 'Readable in 60 seconds', `Too long (${secs}s) — cut it down`],
-          [!/\b(see slide|slide \d+|later in|appendix|as discussed)\b/i.test(text), 'Stands alone — no references elsewhere', 'Refers to other slides — it must stand alone'],
+          [secs <= 60, 'Readable in 60 seconds', `Too long (${secs}s), cut it down`],
+          [!/\b(see slide|slide \d+|later in|appendix|as discussed)\b/i.test(text), 'Stands alone, no references elsewhere', 'Refers to other slides, it must stand alone'],
           [v.s && sentences(v.s) <= 1 && v.c && sentences(v.c) <= 1, 'Situation & complication: one sentence each', 'Situation and complication should be one sentence each'],
           [!!v.rec && !/\b(could|consider|explore|option|or\b|maybe|might)\b/i.test(v.rec), 'One clear, action-oriented recommendation', 'Recommendation is missing, hedged, or offers multiple options'],
           [/\d/.test(v.impact), 'Quantified expected impact', 'Expected impact isn’t quantified'],
           [!!v.root, 'Root cause stated', 'Root cause missing'],
-          [!/\b(regression|cohort analysis|methodology|modeling|p-value|confidence interval)\b/i.test(text), 'No methodology or jargon', 'Methodology/jargon — move it to the appendix'],
+          [!/\b(regression|cohort analysis|methodology|modeling|p-value|confidence interval)\b/i.test(text), 'No methodology or jargon', 'Methodology/jargon, move it to the appendix'],
         ];
         $('#exChecks', root).innerHTML = checks.map(([ok, y, n]) => `<li class="${ok ? 'ok' : 'no'}"><span class="st">${ok ? '✓' : '✕'}</span>${ok ? y : n}</li>`).join('');
       };
@@ -471,7 +471,7 @@
   };
 
   /* =====================================================================
-     CHAPTER 5 — Delivery
+     CHAPTER 5: Delivery
      ===================================================================== */
   const LEX = [
     ['undermine', /\b(i'?m not (an|a) [a-z ]*?expert|i could be wrong|i'?m just an analyst)\b/gi],
@@ -490,7 +490,7 @@
     {
       key: 'exp', label: '“This doesn’t match my experience”', means: 'I’ve seen something different in the field, and I trust my experience more than your data.',
       steps: ['“That’s valuable context. Your experience matters.”', '“Can you tell me more about what you’ve seen? Is it specific to a segment or time period?”', '“Let’s look at the data for that segment specifically…” [show the cut]', '“So the pattern holds overall, with variation in [segment]. Does that change the recommendation?”'],
-      dialog: [['them', 'I don’t think enterprise customers care about trial length. In my experience, they decide quickly.'], ['you', 'Interesting. When you say “decide quickly”, do you mean they know they want the product, or they complete the purchase quickly?'], ['them', 'They know they want it, but procurement takes forever.'], ['you', 'Exactly. That’s what the data shows — they want it, but trials expire during procurement. That’s why extending trials helps.']],
+      dialog: [['them', 'I don’t think enterprise customers care about trial length. In my experience, they decide quickly.'], ['you', 'Interesting. When you say “decide quickly”, do you mean they know they want the product, or they complete the purchase quickly?'], ['them', 'They know they want it, but procurement takes forever.'], ['you', 'Exactly. That’s what the data shows, they want it, but trials expire during procurement. That’s why extending trials helps.']],
     },
     {
       key: 'sample', label: '“The sample size is too small”', means: 'I don’t trust this data. It might be noise.',
@@ -504,27 +504,27 @@
     },
     {
       key: 'cost', label: '“This will cost too much”', means: 'I’m not convinced the ROI is worth it.',
-      steps: ['“Cost is definitely a factor.”', '“Are you comparing to the expected return, or is it a budget constraint?”', '“The investment is $X, the expected return is $Y — payback in Z months.”', '“If we validate the ROI with a pilot, would that change your view?”'],
-      dialog: [['them', 'Adding support capacity for longer trials will cost $200K.'], ['you', 'True. The expected return is $2M in ARR — a 10× ROI. And we’d only add support capacity after validating the conversion lift in the pilot.']],
+      steps: ['“Cost is definitely a factor.”', '“Are you comparing to the expected return, or is it a budget constraint?”', '“The investment is $X, the expected return is $Y, payback in Z months.”', '“If we validate the ROI with a pilot, would that change your view?”'],
+      dialog: [['them', 'Adding support capacity for longer trials will cost $200K.'], ['you', 'True. The expected return is $2M in ARR, a 10× ROI. And we’d only add support capacity after validating the conversion lift in the pilot.']],
     },
     {
       key: 'time', label: '“We don’t have time for this right now”', means: 'This isn’t a priority given everything else.',
       steps: ['“I understand we have a lot going on.”', '“Is the concern bandwidth, or priority relative to other initiatives?”', '“It’s a 2-week implementation that directly impacts our Q4 $10M ARR target.”', '“If this helps us hit the Q4 target, does it become a priority?”'],
-      dialog: [['them', 'We’re focused on the product launch right now. We can’t take this on.'], ['you', 'Understood — the launch is critical. This change takes 2 weeks and needs no engineering, just a config change. Can we do both?']],
+      dialog: [['them', 'We’re focused on the product launch right now. We can’t take this on.'], ['you', 'Understood, the launch is critical. This change takes 2 weeks and needs no engineering, just a config change. Can we do both?']],
     },
   ];
   const PIVOT_QUIZ = [
     ['Two directors independently raise the same concern about support capacity.', 'pivot', '2+ people raising the same concern means it’s a real issue. “Let me come back with a plan that phases this in.”'],
-    ['An exec thinks you’re recommending a price change. You’re recommending a longer trial.', 'hold', 'It’s a misunderstanding — clarify, don’t pivot.'],
+    ['An exec thinks you’re recommending a price change. You’re recommending a longer trial.', 'hold', 'It’s a misunderstanding, clarify, don’t pivot.'],
     ['Finance mentions a hiring freeze you didn’t know about, and your plan needs a new hire.', 'pivot', 'The objection reveals a constraint you didn’t know about. Adapt the plan.'],
     ['One VP’s gut says enterprise buyers decide fast. Your data across 200 deals says otherwise.', 'hold', 'One person’s opinion vs. the data: respectfully show the data.'],
-    ['“The timing isn’t great.” Valid — but waiting costs $2M of ARR.', 'hold', 'Valid concern that doesn’t change the recommendation: acknowledge, then redirect. The cost of waiting is higher than the cost of acting.'],
+    ['“The timing isn’t great.” Valid, but waiting costs $2M of ARR.', 'hold', 'Valid concern that doesn’t change the recommendation: acknowledge, then redirect. The cost of waiting is higher than the cost of acting.'],
   ];
   const PRESSURE = [
-    ['“Present this in 5 minutes” (you prepared for 30)', ['Panic and rush through all 20 slides', 'Skip to slide 15 without context', 'Apologize: “Sorry, I prepared a lot more…”'], 'Go straight to the exec summary: Situation, Complication, Resolution in 60 seconds. Then stop and ask where they want to go deeper — with backup slides ready.'],
-    ['A senior exec joins late and asks you to restart', ['Restart from slide 1 and bore everyone', 'Panic'], 'Give a 30-second version — recommendation, context, impact, where you are — then ask the room: “Did I miss anything important?”'],
-    ['“I don’t know the answer”', ['Make something up', 'Say “I don’t know” and stop', 'Get defensive: “That wasn’t in scope…”'], '“I don’t have that data here, but I can get it by [time]. My hypothesis is [X] — let me confirm.” Honest, action-oriented, still thinking.'],
-    ['The meeting goes off the rails', ['Let it run until time is up', 'Interrupt rudely', 'Sit silently'], '“That’s an important topic. For today’s decision on [X], should we table [Y] and I’ll follow up separately?” — unless the debate is productive: your job is good decisions, not your agenda.'],
+    ['“Present this in 5 minutes” (you prepared for 30)', ['Panic and rush through all 20 slides', 'Skip to slide 15 without context', 'Apologize: “Sorry, I prepared a lot more…”'], 'Go straight to the exec summary: Situation, Complication, Resolution in 60 seconds. Then stop and ask where they want to go deeper, with backup slides ready.'],
+    ['A senior exec joins late and asks you to restart', ['Restart from slide 1 and bore everyone', 'Panic'], 'Give a 30-second version, recommendation, context, impact, where you are, then ask the room: “Did I miss anything important?”'],
+    ['“I don’t know the answer”', ['Make something up', 'Say “I don’t know” and stop', 'Get defensive: “That wasn’t in scope…”'], '“I don’t have that data here, but I can get it by [time]. My hypothesis is [X], let me confirm.” Honest, action-oriented, still thinking.'],
+    ['The meeting goes off the rails', ['Let it run until time is up', 'Interrupt rudely', 'Sit silently'], '“That’s an important topic. For today’s decision on [X], should we table [Y] and I’ll follow up separately?”, unless the debate is productive: your job is good decisions, not your agenda.'],
     ['Someone attacks your methodology', ['Get defensive: “If you look at slide 47…”', 'Argue', 'Fold: “You’re right, it’s probably all wrong.”'], '“Walk me through your concern.” Listen. Explain how you approached it. “Does that address it?” Then redirect to the decision.'],
     ['The audience is far more senior than expected', ['Panic', 'Apologize for not preparing more', 'Over-explain everything'], 'Be more concise. Lead with the one-sentence recommendation, then offer: “Happy to go deeper on any part of that.” Let them direct.'],
   ];
@@ -533,7 +533,7 @@
     if (v > 95) return { tier: 'Overconfident', tag: 'bad', lang: '“This will definitely…” / “I guarantee…”', ex: 'Executives smell BS. Unless you have proof, calibrate down: “This will improve conversion by 15–20%, based on similar changes we’ve tested.”' };
     if (v > 80) return { tier: 'High confidence', tag: 'good', lang: '“This will…” / “We should…” / “I recommend…”', ex: '“Extending trials to 90 days will improve conversion. We saw this exact pattern when we tested 75-day trials last year.”' };
     if (v >= 50) return { tier: 'Medium confidence', tag: 'accent', lang: '“This is likely to…” / “Based on the data, we should…” / “I expect…”', ex: '“Extending trials is likely to improve conversion by 15–20%. The main uncertainty is whether sales will engage earlier if they have more time.”' };
-    return { tier: 'Low confidence', tag: 'warn', lang: '“This might…” / “Early data suggests…” / “We should test…”', ex: '“This might improve conversion, but we need to test it. Early data suggests 15%, but the sample is small.” — still a recommendation: test it.' };
+    return { tier: 'Low confidence', tag: 'warn', lang: '“This might…” / “Early data suggests…” / “We should test…”', ex: '“This might improve conversion, but we need to test it. Early data suggests 15%, but the sample is small.”, still a recommendation: test it.' };
   }
 
   const ch5 = {
@@ -547,7 +547,7 @@
       '<b>Silence is a tool:</b> after making your point, stop. Let it land.',
       '<b>Pushback is engagement:</b> Acknowledge → Clarify → Address → Redirect.',
       '<b>Pressure reveals character:</b> stay calm, be honest when you don’t know, focus on helping them decide.',
-      '<b>You’re not there to be perfect</b> — you’re there to reduce uncertainty and enable better decisions.',
+      '<b>You’re not there to be perfect</b>, you’re there to reduce uncertainty and enable better decisions.',
     ],
     html() {
       return `
@@ -572,7 +572,7 @@
           <div id="confPanel"></div>`)}`)}
 
       ${section('silence', '02', 'When to shut up', `
-        <p>Silence is one of the most powerful tools you have — and most analysts are terrified of it. After stating your recommendation, <b>stop</b>. It gives them time to process, shows confidence, invites engagement and keeps you from undermining yourself.</p>
+        <p>Silence is one of the most powerful tools you have, and most analysts are terrified of it. After stating your recommendation, <b>stop</b>. It gives them time to process, shows confidence, invites engagement and keeps you from undermining yourself.</p>
         ${cmp('“I recommend extending trials to 90 days. I mean, that’s based on the data we have, and there might be other factors, and obviously we’d want to validate this, but…”', '“I recommend extending enterprise trials to 90 days.” [Pause. Wait for a response.]')}
         ${widget('Silence trainer', `
           <p>Say your recommendation out loud, then press start and stay silent. It feels like 30 seconds; it’s usually 3–5 before someone speaks.</p>
@@ -596,32 +596,32 @@
             <li><b>Silence + looking at you:</b> they want more. Now elaborate.</li></ul></div>
           <div class="card"><h4>The rules</h4><ul class="small">
             <li><b>After a question:</b> pause 2 seconds, then answer.</li>
-            <li><b>When they debate in the right direction:</b> don’t interrupt to agree — they trust their peers more than you.</li>
+            <li><b>When they debate in the right direction:</b> don’t interrupt to agree, they trust their peers more than you.</li>
             <li><b>Nervous elaboration trap:</b> count to 5 before adding anything.</li>
             <li><b>Do speak</b> when asked directly, when they misread your data, or after 10+ seconds of expectant silence.</li></ul></div>
         </div>`)}
 
       ${section('pushback', '03', 'How to handle pushback', `
-        <p><b>Pushback is not rejection — it’s engagement.</b> The worst response is no response: polite nods, then nothing happens.</p>
+        <p><b>Pushback is not rejection, it’s engagement.</b> The worst response is no response: polite nods, then nothing happens.</p>
         ${widget('Pushback simulator', `
           <div class="chip-row" id="objChips" style="margin-bottom:14px">${OBJECTIONS.map((o, i) => `<button class="chip" data-obj="${i}" aria-pressed="${i === 0}">${o.label}</button>`).join('')}</div>
           <p class="small"><b>What they mean:</b> <span id="objMeans"></span></p>
           <div class="step-cards" id="objSteps"></div>
           <div class="btn-row"><button class="btn primary" id="objNext">Next step</button><button class="btn" id="objAll">Show all</button></div>
           <div id="objDialog" class="reveal" style="margin-top:16px"><span class="ctl-label">In real life</span><div class="dialogue" id="objDialogInner"></div></div>`)}
-        ${widget('Pivot or hold your ground?', `<div id="pivotQuiz">${PIVOT_QUIZ.map(([q], i) => `<div class="quiz-q" data-q="${i}"><p style="margin:0 0 8px">${q}</p><div class="btn-row"><button class="btn" data-a="pivot">Pivot</button><button class="btn" data-a="hold">Hold your ground</button></div><div class="fb" hidden></div></div>`).join('')}</div>`, 'Never: get defensive, dismiss, argue — or fold immediately. Stay calm, acknowledge, clarify, address, redirect.')}`)}
+        ${widget('Pivot or hold your ground?', `<div id="pivotQuiz">${PIVOT_QUIZ.map(([q], i) => `<div class="quiz-q" data-q="${i}"><p style="margin:0 0 8px">${q}</p><div class="btn-row"><button class="btn" data-a="pivot">Pivot</button><button class="btn" data-a="hold">Hold your ground</button></div><div class="fb" hidden></div></div>`).join('')}</div>`, 'Never: get defensive, dismiss, argue, or fold immediately. Stay calm, acknowledge, clarify, address, redirect.')}`)}
 
       ${section('pressure', '04', 'Presenting under pressure', `
         <p>The real test is when things don’t go to plan. What senior people evaluate isn’t “is this analysis perfect?” but <b>“can I trust this person to handle ambiguity and pressure?”</b></p>
         ${PRESSURE.map(([t, donts, d]) => `<details class="acc"><summary>${t}</summary><div class="acc-body">${donts.map((x) => cmp(x, '')).join('')}${cmp('', d)}</div></details>`).join('')}
-        <div class="callout" style="margin-top:16px"><b>The mental game.</b> Pressure means they care. Your job is to reduce uncertainty, not be perfect. Breathe — slower beats flustered. You know this better than anyone in the room.</div>`)}
+        <div class="callout" style="margin-top:16px"><b>The mental game.</b> Pressure means they care. Your job is to reduce uncertainty, not be perfect. Breathe, slower beats flustered. You know this better than anyone in the room.</div>`)}
 
       ${section('drill', '05', 'The 1-minute drill', `
         ${widget('Deliver your whole message in 60 seconds', `
           <p>Situation → Complication → Resolution. Start the timer and say it out loud. If you can’t finish, your message isn’t clear enough yet.</p>
           <div class="grid2" style="grid-template-columns:auto 1fr;align-items:center;gap:24px">
             <div><div class="timer-face" id="drFace">60</div><div class="btn-row" style="margin-top:10px"><button class="btn primary" id="drStart">Start</button><button class="btn" id="drReset">Reset</button></div></div>
-            <div><ol class="steps small" style="margin:0"><li><div><b>Situation</b> — one sentence of context</div></li><li><div><b>Complication</b> — what changed, the tension</div></li><li><div><b>Resolution</b> — cause, recommendation, impact, next step</div></li></ol></div>
+            <div><ol class="steps small" style="margin:0"><li><div><b>Situation</b>, one sentence of context</div></li><li><div><b>Complication</b>, what changed, the tension</div></li><li><div><b>Resolution</b>, cause, recommendation, impact, next step</div></li></ol></div>
           </div>
           <div class="meter" style="margin-top:14px"><i id="drMeter" style="width:100%"></i></div>`)}
         <div class="card"><h3>Final thoughts</h3>
@@ -653,8 +653,8 @@
         const bad = rows.slice(0, 5).reduce((a, r) => a + r[1], 0), good = rows[5][1];
         $('#hedgeChart', root).innerHTML = C.hbars({ labels: rows.map((r) => r[0]), values: rows.map((r) => r[1]), max: Math.max(4, ...rows.map((r) => r[1])), colors: (i) => (i === 5 ? 'var(--accent)' : 'var(--context)'), fmt: (v) => String(v), labelW: 120, rowH: 30, w: 460, strong: (i) => i === 5 });
         const score = Math.max(0, Math.min(100, Math.round(50 + good * 15 - bad * 12)));
-        $('#hedgeScore', root).textContent = text.trim() ? score : '—';
-        $('#hedgeSub', root).textContent = !text.trim() ? '' : bad === 0 && good >= 3 ? 'Trusted-advisor language' : bad === 0 ? 'Clean — add a clear “I recommend…”' : `${bad} credibility killer${bad > 1 ? 's' : ''} to remove`;
+        $('#hedgeScore', root).textContent = text.trim() ? score : '-';
+        $('#hedgeSub', root).textContent = !text.trim() ? '' : bad === 0 && good >= 3 ? 'Trusted-advisor language' : bad === 0 ? 'Clean, add a clear “I recommend…”' : `${bad} credibility killer${bad > 1 ? 's' : ''} to remove`;
         $('#hedgeTitle', root).textContent = !text.trim() ? 'Nothing to analyze yet' : bad > good ? `${bad} credibility killers vs. ${good} confident statement${good === 1 ? '' : 's'}` : `${good} confident statement${good === 1 ? '' : 's'}, ${bad} credibility killer${bad === 1 ? '' : 's'}`;
       };
       inp.value = HEDGE_PRESETS.before;
@@ -722,7 +722,7 @@
           const fb = $('.fb', q);
           fb.hidden = false;
           fb.className = 'fb ' + (ok ? 'ok' : 'ko');
-          fb.innerHTML = `<b>${ok ? 'Right' : 'Not quite'} — ${ans === 'pivot' ? 'pivot' : 'hold your ground'}.</b> ${why}`;
+          fb.innerHTML = `<b>${ok ? 'Right' : 'Not quite'}, ${ans === 'pivot' ? 'pivot' : 'hold your ground'}.</b> ${why}`;
         }));
       });
 

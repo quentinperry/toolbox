@@ -1,8 +1,8 @@
-# Data Storytelling Playbook — interactive web app
+# Data Storytelling Playbook: interactive web app
 
 An interactive companion to the *Data storytelling playbook* (a deep-dive largely based on Chartosaur's *Present With Data Playbook*).
 
-Open `index.html` in a browser — no build step, no dependencies, works offline.
+Open `index.html` in a browser, no build step, no dependencies, works offline.
 
 ## What's inside
 
@@ -19,9 +19,9 @@ Checklists, form inputs and visited chapters are saved in the browser's `localSt
 
 ## Files
 
-- `index.html` — shell
-- `styles.css` — design tokens (light + dark), layout, components
-- `charts.js` — tiny SVG chart kit (line, bar, horizontal bar, stacked, scatter, pie) with tooltips
-- `core.js` — shared helpers (storage, checklists, segmented controls, tooltip)
-- `chapters-a.js`, `chapters-b.js` — chapter content and interactions
-- `app.js` — hash router, navigation, home page, theme toggle
+- `index.html`: shell
+- `styles.css`: design tokens (light + dark), layout, components
+- `charts.js`: tiny SVG chart kit (line, bar, horizontal bar, stacked, scatter, pie) with tooltips
+- `core.js`: shared helpers (storage, checklists, segmented controls, tooltip)
+- `chapters-a.js`, `chapters-b.js`: chapter content and interactions
+- `app.js`: hash router, navigation, home page, theme toggle

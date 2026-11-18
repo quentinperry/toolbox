@@ -4,8 +4,8 @@
   const CH = DSP.chapters.sort((a, b) => a.n - b.n);
 
   const DESCS = {
-    ch0: 'Start here — especially if you have a presentation tomorrow.',
-    ch1: 'Why smart analysts get ignored — and how to become trusted instead.',
+    ch0: 'Start here, especially if you have a presentation tomorrow.',
+    ch1: 'Why smart analysts get ignored, and how to become trusted instead.',
     ch2: 'Turning data into insights people care about.',
     ch3: 'Making charts that communicate, not just display data.',
     ch4: 'Designing slides that guide the eye to what matters.',
@@ -19,7 +19,7 @@
       <a href="#/" class="${active === 'home' ? 'active' : ''}"><span class="num">★</span><span>Overview</span></a>
       <div class="side-label">Chapters</div>
       ${CH.map((c) => `<a href="#/${c.slug}" class="${active === c.slug ? 'active' : ''} ${visited.has(c.slug) ? 'visited' : ''}"><span class="num">${c.n}</span><span>${c.short}</span></a>`).join('')}
-      <div class="credit">An interactive companion to the Data Storytelling Playbook — a deep-dive largely based on the <a href="https://www.chartosaur.com/playbook" target="_blank" rel="noopener">Present With Data Playbook</a> by Chartosaur.</div>`;
+      <div class="credit">An interactive companion to the Data Storytelling Playbook, a deep-dive largely based on the <a href="https://www.chartosaur.com/playbook" target="_blank" rel="noopener">Present With Data Playbook</a> by Chartosaur.</div>`;
     const n = CH.filter((c) => visited.has(c.slug)).length;
     $('#progressPill').textContent = `${n} / ${CH.length} chapters explored`;
   }
@@ -29,7 +29,7 @@
       <div class="hero">
         <div class="eyebrow">Data storytelling playbook</div>
         <h1>You’re smart. You know how to analyze data. But your insights keep getting ignored.</h1>
-        <p class="lede">This playbook isn’t about making you a better analyst — you already know how to analyze. It’s about making you a better communicator, so your analysis actually matters. Every chapter has charts and tools you can play with.</p>
+        <p class="lede">This playbook isn’t about making you a better analyst, you already know how to analyze. It’s about making you a better communicator, so your analysis actually matters. Every chapter has charts and tools you can play with.</p>
         <div class="btn-row"><a class="btn primary" href="#/ch0" style="text-decoration:none">Start here →</a><a class="btn" href="#/ch3/lab" style="text-decoration:none">Jump to the chart lab</a></div>
       </div>
       <div class="chapter-cards">
@@ -48,7 +48,7 @@
           ].map(([t, d, h], i) => `<a href="${h}"><span class="e-n">${i + 1}</span><span><span class="e-t">${t}</span><br><span class="e-d">${d}</span></span><span class="muted">→</span></a>`).join('')}
         </div>
       </section>
-      <p class="small muted">Further reading: <a href="https://www.chartosaur.com/" target="_blank" rel="noopener">Chartosaur — Data storytelling made simple</a>.</p>
+      <p class="small muted">Further reading: <a href="https://www.chartosaur.com/" target="_blank" rel="noopener">Chartosaur: Data storytelling made simple</a>.</p>
     </div>`;
   }
 

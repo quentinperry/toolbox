@@ -1,4 +1,4 @@
-/* Tiny SVG chart kit — no dependencies.
+/* Tiny SVG chart kit: no dependencies.
    Every chart returns an SVG string; marks carry data-tip for the shared tooltip. */
 (function () {
   const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
